@@ -1,0 +1,180 @@
+🔗 URL Shortener – Backend (Spring Boot + MongoDB)
+
+A backend service for shortening long URLs, tracking usage analytics, and redirecting users efficiently.
+Built with Spring Boot and MongoDB, following clean architecture and REST best practices.
+
+🚀 Features
+
+Create short URLs from long URLs
+
+Return same short URL if the original URL already exists
+
+Redirect short URLs to original URLs
+
+Track:
+
+Daily usage count
+
+Monthly usage count
+
+Last accessed timestamp
+
+Proper validation and exception handling
+
+MongoDB auto-collection creation
+
+Clean layered architecture (Controller → Service → Repository)
+
+🛠 Tech Stack
+
+Java 17+
+
+Spring Boot 4.x
+
+Spring Web MVC
+
+Spring Data MongoDB
+
+MongoDB
+
+Maven
+
+📁 Project Structure
+src/main/java/com/example/demo
+│
+├── controller
+│   └── UrlController.java
+│
+├── service
+│   └── UrlService.java
+│
+├── repository
+│   └── UrlRepo.java
+│
+├── entities
+│   └── UrlEntity.java
+│
+├── exception
+│   ├── BadRequestException.java
+│   ├── NotFoundException.java
+│   └── GlobalExceptionHandler.java
+│
+├── util
+│   └── HashUtil.java
+│
+└── UrlShortnerApplication.java
+
+⚙️ Configuration
+application.properties
+spring.data.mongodb.uri=mongodb://localhost:27017/urlshortener
+server.port=8080
+
+
+Make sure MongoDB is running locally on port 27017.
+
+📌 API Endpoints
+1️⃣ Create Short URL
+
+POST /shorten
+
+Request Body (JSON):
+
+{
+  "url": "https://www.google.com"
+}
+
+
+Response (String):
+
+abc123
+
+
+Returns existing short key if URL already exists
+
+Does not update usage counters
+
+2️⃣ Redirect to Original URL
+
+GET /{shortKey}
+
+Example:
+
+GET /abc123
+
+
+Behavior:
+
+Redirects to original URL
+
+Increments:
+
+dayCount
+
+monthCount
+
+Updates last access timestamp
+
+❌ Error Handling
+Scenario	Status Code	Message
+Empty or missing URL	400	URL must not be empty
+Short URL not found	404	URL not found
+Server errors	500	Internal Server Error
+
+Handled centrally using @RestControllerAdvice.
+
+🧠 Design Decisions
+
+Counters update only on redirect, not on creation
+
+Same URL → Same short key (idempotent POST)
+
+Controller kept thin; business logic in service layer
+
+MongoDB chosen for flexibility and fast reads
+
+▶️ Running the Project
+mvn clean install
+mvn spring-boot:run
+
+
+Server starts at:
+
+http://localhost:8080
+
+🧪 Testing
+
+You can test APIs using:
+
+Postman
+
+Curl
+
+Frontend (React – upcoming)
+
+Make sure to set:
+
+Content-Type: application/json
+
+🔮 Future Enhancements
+
+Scheduled cleanup for unused URLs
+
+Expiry policy
+
+Authentication & rate limiting
+
+Frontend UI (React)
+
+Analytics dashboard
+
+👨‍💻 Author
+
+Built as a learning + production-style project to understand:
+
+REST APIs
+
+Spring Boot internals
+
+MongoDB integration
+
+Backend architecture
