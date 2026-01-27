@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Data   // ⭐ Lombok magic
+@Data   // lombok handles getters and setters
 @Document(collection = "urls")
 public class UrlEntity {
 
