@@ -13,7 +13,7 @@ public class UrlEntity {
     @Id
     private String id;
 
-    private String baseUrl;
+    private String   baseUrl;
     private String newUrl;
     private Integer monthCount;
     private Integer dayCount;
