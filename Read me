@@ -24,7 +24,6 @@ Proper validation and exception handling
 MongoDB auto-collection creation
 
 Clean layered architecture (Controller → Service → Repository)
-
 🛠 Tech Stack
 
 Java 17+
