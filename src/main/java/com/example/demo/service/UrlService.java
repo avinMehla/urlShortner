@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-@Service
+@Service // annotation helps in springboot
 public class UrlService {
 
     private final UrlRepo repo;
