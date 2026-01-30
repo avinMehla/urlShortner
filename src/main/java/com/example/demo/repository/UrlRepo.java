@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface UrlRepo
         extends MongoRepository<UrlEntity, String> {
-
+      
     Optional<UrlEntity> findByNewUrl(String newUrl);
 
     Optional<UrlEntity> findByBaseUrl(String baseUrl);
