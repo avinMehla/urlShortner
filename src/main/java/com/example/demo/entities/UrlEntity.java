@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Document(collection = "urls")
 public class UrlEntity {
 
-    @Id
+ @Id   
     private String id;
 
     private String   baseUrl;
